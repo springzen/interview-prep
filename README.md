@@ -25,8 +25,6 @@ This project uses Maven for build and module management.
 
 ```bash
 # Clone the project
-git clone https://github.com/YOUR_USERNAME/core-practice.git
-cd core-practice
-
-# Run the main service (core-practice)
-./mvnw clean spring-boot:run -pl core-practice
+git clone https://github.com/springzen/interview-prep.git
+cd interview-prep
+```
