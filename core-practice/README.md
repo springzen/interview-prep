@@ -1,6 +1,6 @@
 # Core Practice – Main Spring Boot Application
 
-This is the primary application in the multi-module project built as part of interview preparation for the Cloud Software Architect role at **MasterControl**.
+This is the primary application in the multi-module project built as part of interview preparation.
 
 ## Features
 
@@ -16,7 +16,7 @@ This is the primary application in the multi-module project built as part of int
 ```bash
 ./mvnw clean spring-boot:run -pl core-practice
 ```
-Or run it via your IDE (IntelliJ recommended).
+Or run it via IDE (IntelliJ recommended).
 App runs on: http://localhost:8989
 
 ##  Swagger API Docs
@@ -27,7 +27,7 @@ Once the app is running:
 
 ## Sample Endpoint
 ```GET /api/invoices```
-Returns a list of mock invoices (expand as needed to match your demo).
+Returns a list of mock invoices.
 
 ## Stack
 * Java 17
