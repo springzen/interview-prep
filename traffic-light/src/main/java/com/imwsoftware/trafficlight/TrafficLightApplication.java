@@ -1,0 +1,18 @@
+package com.imwsoftware.trafficlight;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@SpringBootApplication
+@ComponentScan(basePackages = {
+        "com.imwsoftware.trafficlight",
+        "com.imwsoftware.diagnostics"
+})
+@EnableScheduling
+public class TrafficLightApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(TrafficLightApplication.class, args);
+    }
+}

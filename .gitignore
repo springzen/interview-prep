@@ -1,0 +1,45 @@
+# macOS
+.DS_Store
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code (if you switch to it)
+.vscode/
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Java
+*.class
+
+# Environment/secret files
+.env
+.env.*
+
+# Eclipse (if someone uses it)
+.classpath
+.project
+.settings/
+
+# Swagger-generated files (if any)
+swagger-ui/
+
+# Build output from IDEs
+build/
+
+# Misc
+*.swp

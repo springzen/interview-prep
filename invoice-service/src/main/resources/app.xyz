@@ -1,0 +1,30 @@
+
+spring:
+    application:
+        name: invoice-service
+    datasource:
+        url: jdbc:mysql://localhost:3308/invoicedb
+        username: root
+        password: root
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+    kafka:
+        bootstrap-servers: localhost:9092
+        consumer:
+            group-id: invoice-log-group
+            auto-offset-reset: earliest
+            properties:
+                spring:
+                    json:
+                        trusted:
+                            packages: '*'
+        producer:
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    docker:
+        compose:
+            file: src/main/docker/docker-compose.yml
+server:
+    port: 8999
