@@ -18,5 +18,13 @@ spring:
     docker:
         compose:
             file: src/main/docker/docker-compose.yml
+    web:
+        resources:
+            add-mappings: false
 server:
     port: 8999
+    error:
+        whitelabel:
+            enabled: false
+        include-message: always
+        include-exception: false
