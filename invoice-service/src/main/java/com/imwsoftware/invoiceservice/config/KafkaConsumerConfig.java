@@ -9,8 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
+import org.springframework.kafka.listener.DefaultErrorHandler;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import com.imwsoftware.invoiceservice.model.Invoice;
+import org.springframework.util.backoff.FixedBackOff;
 
 @Configuration
 public class KafkaConsumerConfig {
@@ -30,10 +34,18 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Invoice> invoiceKafkaListenerContainerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, Invoice> invoiceKafkaListenerContainerFactory(
+        KafkaTemplate<Object, Object> recovererTemplate) {
+
         ConcurrentKafkaListenerContainerFactory<String, Invoice> factory =
             new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(invoiceConsumerFactory());
+
+        factory.setCommonErrorHandler(new DefaultErrorHandler(
+            new DeadLetterPublishingRecoverer(recovererTemplate),
+            new FixedBackOff(1000L, 1L) // retry once after 1 second
+        ));
+
         return factory;
     }
 }
